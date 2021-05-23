@@ -1,13 +1,13 @@
-//Promesas
-let promesa = new Promise((resolve,reject)=>{
-	setTimeout(()=>{
-		let numero = Math.random();
-		console.log(numero);
-		if(numero >= 0.5) resolve("Exito");
-		reject("Error");
-	}, 500);
-})
+const fs = require('fs');
+function readFile(path){
+    return new Promise((resolve, reject)=>{
+        fs.readFile(path, "utf-8", (err,data) => {
+            if(err) return reject(err);
+            return resolve(data);
+        });
+    })
+}
 
-promesa
-    .then((data)=> console.log("Then ", data))
-    .catch((error)=> console.log("Catch ", error))
+readFile("./ar.txt")
+    .then((data) => console.log("Then" , data))
+    .catch((error)=>console.log("Catch ", error))
