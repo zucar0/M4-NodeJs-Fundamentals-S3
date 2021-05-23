@@ -1,8 +1,16 @@
-//Callbacks
-function saludar(nombre){
-    console.log('Hola ', nombre);
+//Callbacks ejemplos
+function primera(call1, call2){
+    setTimeout(() =>{
+        console.log("1");
+        call1();
+        call2();
+    }), 3000;
 }
-function entrada(nombre, callback){
-    callback(nombre);
+function segunda(){
+    console.log("2");
 }
-entrada('Antonio', saludar);
+function tercera(){
+    console.log("3");
+}
+
+primera(segunda, tercera);
